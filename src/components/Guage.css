@@ -4,26 +4,6 @@
   left: 0;
 }
 
-.ticks {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.logo {
-  position: absolute;
-  top: 64%;
-  left: 40%;
-  width: 20%;
-}
-
-.needle {
-  position: absolute;
-  top: -13%;
-  left: 48%;
-  transform: scale(0.6);
-}
-
 .svg-circle-background,
 .svg-major-ticks,
 .svg-circle-interior {
@@ -33,7 +13,7 @@
 }
 
 .svg-circle-interior {
-  r: 0.6rem;
+  r: 0.65rem;
   fill: url(#inner-gradient);
   stroke: #2f2f2f;
   stroke-width: 0.09rem;

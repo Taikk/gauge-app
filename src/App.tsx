@@ -4,8 +4,8 @@ import { Gauge } from "./components/Gauge";
 import Slider from "./components/Slider";
 
 function App() {
-  const [angle, setAngle] = useState<number>(0);
-  const [ticks, setTicks] = useState<number>(0);
+  const [angle, setAngle] = useState<number | undefined>(undefined);
+  const [ticks, setTicks] = useState<number | undefined>(undefined);
 
   return (
     <>
@@ -19,7 +19,7 @@ function App() {
           }}
         />
       </div>
-      <div className="text">{angle.toFixed(0)}</div>
+      <div className="text">{angle?.toFixed(0)}</div>
 
       <div className="slider">
         <Slider
@@ -30,7 +30,7 @@ function App() {
           }}
         />
       </div>
-      <div className="text">{ticks.toFixed(0)}</div>
+      <div className="text">{ticks?.toFixed(0)}</div>
     </>
   );
 }
