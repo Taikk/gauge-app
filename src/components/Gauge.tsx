@@ -4,26 +4,25 @@ import Ticks from "./Ticks/Ticks";
 
 interface Prop {
   angle?: number;
-  tickNum?: number;
+  majorTicks?: number;
+  tickInterval?: number,
   radius?: number;
   scale?: number;
 }
 
 export const Gauge: React.FC<Prop> = ({
   angle = 40,
-  tickNum = 9,
+  majorTicks = 9,
   radius = 47,
   scale = 1,
 }) => {
   return (
-    <div className="gauge" style={{ width: '200px', height: '200px'}}>
+    <div className="gauge" style={{ width: "200px", height: "200px" }}>
       <svg
         viewBox="0 0 100 100"
-        height="200"
-        width="200"
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
-        style={{transform: `scale(${scale})`}}
+        preserveAspectRatio="xMidYMid"
+        style={{ transform: `scale(${scale})` }}
       >
         <defs>
           <radialGradient
@@ -60,7 +59,7 @@ export const Gauge: React.FC<Prop> = ({
         <Ticks
           startAngle={-20}
           endAngle={220}
-          numTicks={tickNum * 3 - 2}
+          numTicks={majorTicks * 3 - 2}
           radius={radius}
           wh={100}
           tickStartAngle={-192}
@@ -69,7 +68,7 @@ export const Gauge: React.FC<Prop> = ({
         <Ticks
           startAngle={-20}
           endAngle={220}
-          numTicks={tickNum}
+          numTicks={majorTicks}
           radius={radius}
           wh={100}
           renderNumbers

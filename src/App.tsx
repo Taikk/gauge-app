@@ -12,7 +12,7 @@ function App() {
     <>
       <div className="container">
         <p>Gauge</p>
-        <Gauge angle={angle} tickNum={ticks} scale={scale} />
+        <Gauge angle={angle} majorTicks={ticks} scale={scale} />
         <p>Needle Angle</p>
         <div className="slider">
           <Slider
