@@ -5,16 +5,25 @@ import Ticks from "./Ticks/Ticks";
 interface Prop {
   angle?: number;
   tickNum?: number;
+  radius?: number;
+  scale?: number;
 }
 
-export const Gauge: React.FC<Prop> = ({ angle = 40, tickNum = 9 }) => {
+export const Gauge: React.FC<Prop> = ({
+  angle = 40,
+  tickNum = 9,
+  radius = 47,
+  scale = 1,
+}) => {
   return (
-    <div className="gauge">
+    <div className="gauge" style={{ width: '200px', height: '200px'}}>
       <svg
         viewBox="0 0 100 100"
         height="200"
         width="200"
         xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet"
+        style={{transform: `scale(${scale})`}}
       >
         <defs>
           <radialGradient
@@ -45,14 +54,14 @@ export const Gauge: React.FC<Prop> = ({ angle = 40, tickNum = 9 }) => {
           </radialGradient>
         </defs>
         // Background Circle
-        <circle className="svg-circle-background" />
+        <circle className="svg-circle-background" r={radius + 1} />
         // Interior Circle
-        <circle className="svg-circle-interior" />
+        <circle className="svg-circle-interior" r={radius / 4.5} />
         <Ticks
           startAngle={-20}
           endAngle={220}
-          numTicks={25}
-          radius={47}
+          numTicks={tickNum * 3 - 2}
+          radius={radius}
           wh={100}
           tickStartAngle={-192}
           tickSize={9}
@@ -61,7 +70,7 @@ export const Gauge: React.FC<Prop> = ({ angle = 40, tickNum = 9 }) => {
           startAngle={-20}
           endAngle={220}
           numTicks={tickNum}
-          radius={47}
+          radius={radius}
           wh={100}
           renderNumbers
           tickStartAngle={-192}
@@ -70,7 +79,7 @@ export const Gauge: React.FC<Prop> = ({ angle = 40, tickNum = 9 }) => {
         <Needle pointAngle={angle} />
         <image
           href="/public/tektonux_v_lightOnDark@2x.png"
-          height={20}
+          height={radius / 2.5}
           transform="translate(40 68)"
         />
       </svg>

@@ -9,11 +9,9 @@
 .svg-circle-interior {
   cx: 50%;
   cy: 50%;
-  r: 3rem;
 }
 
 .svg-circle-interior {
-  r: 0.65rem;
   fill: url(#inner-gradient);
   stroke: #2f2f2f;
   stroke-width: 0.09rem;

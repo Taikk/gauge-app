@@ -3,9 +3,10 @@ import { useState } from "react";
 
 interface Props {
   pointAngle: number;
+  size?: number,
 }
 
-export const Needle: React.FC<Props> = ({ pointAngle }) => {
+export const Needle: React.FC<Props> = ({ pointAngle, size = 55 }) => {
   const [rotation, setRotation] = useState<number>();
 
   React.useEffect(() => {
@@ -19,7 +20,7 @@ export const Needle: React.FC<Props> = ({ pointAngle }) => {
         transformOrigin: "50% 50%",
         transform: `rotate(${rotation}deg) translate(49px, 6px)`,
       }}
-      height={55}
+      height={size}
     />
   );
 };

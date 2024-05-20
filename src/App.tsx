@@ -6,31 +6,68 @@ import Slider from "./components/Slider";
 function App() {
   const [angle, setAngle] = useState<number | undefined>(undefined);
   const [ticks, setTicks] = useState<number | undefined>(undefined);
+  const [scale, setScale] = useState<number | undefined>(undefined);
 
   return (
     <>
-      <Gauge angle={angle} tickNum={ticks} />
-      <div className="slider">
-        <Slider
-          min={-120}
-          max={120}
-          onChange={function (newVal): void {
-            setAngle(newVal);
+      <div className="container">
+        <p>Gauge</p>
+        <Gauge angle={angle} tickNum={ticks} scale={scale} />
+        <p>Needle Angle</p>
+        <div className="slider">
+          <Slider
+            min={-120}
+            max={120}
+            onChange={function (newVal): void {
+              setAngle(newVal);
+            }}
+          />
+        </div>
+        <input
+          type="text"
+          value={angle?.toFixed(0)}
+          onChange={(e) => {
+            const newVal = parseFloat(e.target.value);
+            setAngle(isNaN(newVal) ? undefined : newVal);
+          }}
+        />
+        <p>Tick Number</p>
+        <div className="slider">
+          <Slider
+            min={2}
+            max={13}
+            onChange={function (newVal): void {
+              setTicks(Math.round(newVal));
+            }}
+          />
+        </div>
+        <input
+          type="text"
+          value={ticks?.toFixed(0)}
+          onChange={(e) => {
+            const newVal = parseFloat(e.target.value);
+            setTicks(isNaN(newVal) ? undefined : newVal);
+          }}
+        />
+        <p>Scale</p>
+        <div className="slider">
+          <Slider
+            min={0.5}
+            max={2}
+            onChange={function (newVal): void {
+              setScale(newVal);
+            }}
+          />
+        </div>
+        <input
+          type="text"
+          value={scale?.toFixed(1)}
+          onChange={(e) => {
+            const newVal = parseFloat(e.target.value);
+            setScale(isNaN(newVal) ? undefined : newVal);
           }}
         />
       </div>
-      <div className="text">{angle?.toFixed(0)}</div>
-
-      <div className="slider">
-        <Slider
-          min={0}
-          max={13}
-          onChange={function (newVal): void {
-            setTicks(Math.round(newVal));
-          }}
-        />
-      </div>
-      <div className="text">{ticks?.toFixed(0)}</div>
     </>
   );
 }
