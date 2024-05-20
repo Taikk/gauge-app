@@ -3,20 +3,24 @@ import { useState } from "react";
 
 interface Props {
   pointAngle: number;
+  size?: number,
 }
 
-export const Needle: React.FC<Props> = ({ pointAngle }) => {
-  const [rotation, setRotation] = useState<number>(0);
+export const Needle: React.FC<Props> = ({ pointAngle, size = 55 }) => {
+  const [rotation, setRotation] = useState<number>();
 
   React.useEffect(() => {
     setRotation(pointAngle);
   }, [pointAngle]);
 
   return (
-    <img
-      src="/public/Needle.svg"
-      alt="Needle"
-      style={{ transform: `rotate(${rotation}deg)`, transformOrigin: "bottom center" }}
+    <image
+      href="/public/Needle.svg"
+      style={{
+        transformOrigin: "50% 50%",
+        transform: `rotate(${rotation}deg) translate(49px, 6px)`,
+      }}
+      height={size}
     />
   );
 };
