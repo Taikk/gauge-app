@@ -7,6 +7,7 @@ interface Prop {
   tickNum?: number;
   radius?: number;
   scale?: number;
+  interval?: number;
 }
 
 export const Gauge: React.FC<Prop> = ({
@@ -14,16 +15,17 @@ export const Gauge: React.FC<Prop> = ({
   tickNum = 9,
   radius = 47,
   scale = 1,
+  interval = 2,
 }) => {
   return (
-    <div className="gauge" style={{ width: '200px', height: '200px'}}>
+    <div className="gauge" style={{ width: "200px", height: "200px" }}>
       <svg
         viewBox="0 0 100 100"
         height="200"
         width="200"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
-        style={{transform: `scale(${scale})`}}
+        style={{ transform: `scale(${scale})` }}
       >
         <defs>
           <radialGradient
@@ -60,21 +62,21 @@ export const Gauge: React.FC<Prop> = ({
         <Ticks
           startAngle={-20}
           endAngle={220}
-          numTicks={tickNum * 3 - 2}
+          numMajorTicks={tickNum}
           radius={radius}
-          wh={100}
           tickStartAngle={-192}
           tickSize={9}
+          numMinorTicksBetweenMajor={interval}
         />
         <Ticks
           startAngle={-20}
           endAngle={220}
-          numTicks={tickNum}
+          numMajorTicks={tickNum}
           radius={radius}
-          wh={100}
           renderNumbers
           tickStartAngle={-192}
           tickSize={6}
+          numMinorTicksBetweenMajor={0}
         />
         <Needle pointAngle={angle} />
         <image
