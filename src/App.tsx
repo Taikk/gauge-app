@@ -9,7 +9,6 @@ function App() {
   const [ticks, setTicks] = useState<number | undefined>(undefined);
   const [minorTicks, setMinorTicks] = useState<number | undefined>(undefined);
   const [scale, setScale] = useState<number | undefined>(undefined);
-  const [newpercent, setNewPercent] = useState<number>(0);
   const [linearTicks, setLinearTicks] = useState<number>(0);
   const [interval, setInterval] = useState<number>(0);
   const [size, setSize] = useState<number>(0);
