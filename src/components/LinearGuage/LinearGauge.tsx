@@ -57,7 +57,7 @@ export const LinearGauge: React.FC<LinearGaugeProps> = ({
   const renderMinorTicks = () => {
     const tickPositions = calculateTickPositions();
 
-    return tickPositions.map((tick, index) => {
+    return tickPositions.map((index) => {
       if (index % minorTicksPerMajor !== 0) {
         const x = `${(index / (tickPositions.length - 1)) * 100}%`;
         return (
